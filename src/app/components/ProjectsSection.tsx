@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Eye, Code2 } from 'lucide-react';
+import { ExternalLink, Github, Eye, Code2, ShoppingCart } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -13,6 +13,7 @@ interface Project {
   github: string;
   technologies: string[];
   hoverText: string;
+  isDesignOnly?: boolean;
 }
 
 export default function ProjectsSection() {
@@ -21,21 +22,66 @@ export default function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch('/api/projects');
-        if (!response.ok) {
-          throw new Error('Failed to fetch projects');
-        }
-        const data: Project[] = await response.json();
-        setProjects(data);
-      } catch (err) {
-        setError('Failed to load projects. Please try again later.');
-        console.error(err);
+    // Static project data based on Jean Bonheur's resume with custom cart project
+    const staticProjects: Project[] = [
+      {
+        title: "E-Commerce Cart System",
+        description: "Interactive shopping cart with real-time updates, price calculations, and checkout flow.",
+        image: "/images/cart-project.jpg",
+        link: "/projects/cart",
+        github: "#",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Zustand"],
+        hoverText: "Fully functional shopping cart with add/remove items, quantity updates, total price calculation, and responsive design.",
+        isDesignOnly: true
+      },
+      {
+        title: "Ndaje · Bus Ticket Booking",
+        description: "Multi-language web platform for booking public bus tickets across Rwanda.",
+        image: "/images/ndaje-project.jpg",
+        link: "https://ndaje.rw",
+        github: "https://github.com/nzasingizimana/ndaje",
+        technologies: ["Python", "PHP", "JavaScript", "MySQL", "Tailwind CSS"],
+        hoverText: "Full-stack web application with real-time booking, payment integration, and multi-language support. Built with Python, PHP, and JavaScript."
+      },
+      {
+        title: "Shop Management System",
+        description: "Complete business management system built entirely in Excel with automated dashboards.",
+        image: "/images/excel-dashboard.jpg",
+        link: "#",
+        github: "https://github.com/nzasingizimana/shop-management-excel",
+        technologies: ["Excel VBA", "Advanced Formulas", "Dashboards", "Data Automation"],
+        hoverText: "Full-featured business management system with inventory, sales, invoices, and expense tracking. Automated cross-linked formulas for real-time sync."
+      },
+      {
+        title: "IT Support & Consulting",
+        description: "Professional IT support and system management services for insurance companies.",
+        image: "/images/it-consulting.jpg",
+        link: "#",
+        github: "https://github.com/nzasingizimana/it-support-tools",
+        technologies: ["IT Support", "Networking", "Troubleshooting", "EBM Operation"],
+        hoverText: "Provided IT support and consultancy services at Radiant Company, handling system operations, data management, and technical troubleshooting."
+      },
+      {
+        title: "Network Infrastructure Lab",
+        description: "Hands-on networking projects covering TCP/IP, routing, and Cisco IOS fundamentals.",
+        image: "/images/networking-lab.jpg",
+        link: "#",
+        github: "https://github.com/nzasingizimana/networking-lab",
+        technologies: ["Cisco IOS", "TCP/IP", "Subnetting", "Routing Protocols"],
+        hoverText: "Practical networking exercises and configurations covering OSI model, subnetting, routing, and Cisco IOS fundamentals."
+      },
+      {
+        title: "Python Automation Scripts",
+        description: "Collection of Python scripts for automating data processing and system tasks.",
+        image: "/images/python-automation.jpg",
+        link: "#",
+        github: "https://github.com/nzasingizimana/python-automation",
+        technologies: ["Python", "Automation", "Data Processing", "APIs"],
+        hoverText: "Reusable Python scripts for data entry automation, file management, and system task automation."
       }
-    };
+    ];
 
-    fetchProjects();
+    setProjects(staticProjects);
   }, []);
 
   if (error) {
@@ -76,7 +122,7 @@ export default function ProjectsSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-slate-300 max-w-2xl mx-auto"
           >
-            Showcasing My Best Work
+            Building Practical Solutions · Code that Solves Real Problems
           </motion.p>
         </div>
 
@@ -93,14 +139,28 @@ export default function ProjectsSection() {
               className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200"
             >
               {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={400}
-                  height={300}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center">
+                {project.isDesignOnly ? (
+                  <div className="flex flex-col items-center justify-center text-white/40">
+                    <ShoppingCart size={64} className="mb-2 text-orange-400/60" />
+                    <span className="text-sm font-medium text-white/40">Design Preview</span>
+                    <span className="text-xs text-white/20 mt-1">UI/UX Concept</span>
+                  </div>
+                ) : project.image.startsWith('/images/') ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
+                ) : (
+                  <div className="text-6xl text-white/20">🚀</div>
+                )}
                 
                 {/* Hover Overlay */}
                 <motion.div
@@ -114,7 +174,7 @@ export default function ProjectsSection() {
                   
                   {/* Technology Tags */}
                   <div className="flex flex-wrap justify-center gap-2 mb-4">
-                    {project.technologies.map((tech) => (
+                    {project.technologies.slice(0, 3).map((tech) => (
                       <span 
                         key={tech} 
                         className="bg-orange-500 text-white px-2 py-1 rounded-md text-xs font-medium"
@@ -122,41 +182,64 @@ export default function ProjectsSection() {
                         {tech}
                       </span>
                     ))}
+                    {project.technologies.length > 3 && (
+                      <span className="bg-orange-500 text-white px-2 py-1 rounded-md text-xs font-medium">
+                        +{project.technologies.length - 3}
+                      </span>
+                    )}
                   </div>
                   
                   {/* Action Buttons */}
                   <div className="flex gap-3">
-                    <motion.a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
-                    >
-                      <Eye size={16} />
-                      Live Demo
-                    </motion.a>
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 bg-slate-700 hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
-                    >
-                      <Code2 size={16} />
-                      Code
-                    </motion.a>
+                    {project.isDesignOnly ? (
+                      <div className="flex items-center gap-2 bg-orange-500/80 text-white px-4 py-2 rounded-lg font-medium cursor-default">
+                        <ShoppingCart size={16} />
+                        Design Only
+                      </div>
+                    ) : (
+                      <>
+                        <motion.a
+                          href={project.link}
+                          target={project.link.startsWith('/') ? '_self' : '_blank'}
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                        >
+                          <Eye size={16} />
+                          {project.link.startsWith('/') ? 'View Project' : 'Live Demo'}
+                        </motion.a>
+                        {project.github !== '#' && (
+                          <motion.a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex items-center gap-2 bg-slate-700 hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                          >
+                            <Code2 size={16} />
+                            Code
+                          </motion.a>
+                        )}
+                      </>
+                    )}
                   </div>
                 </motion.div>
               </div>
 
               {/* Project Info */}
               <div className="p-6 bg-white">
-                <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-orange-600 transition-colors duration-200">
-                  {project.title}
-                </h3>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors duration-200">
+                    {project.title}
+                  </h3>
+                  {project.isDesignOnly && (
+                    <span className="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full font-medium">
+                      Design
+                    </span>
+                  )}
+                </div>
                 <p className="text-slate-600 text-sm mb-4 leading-relaxed">
                   {project.description}
                 </p>
@@ -183,28 +266,8 @@ export default function ProjectsSection() {
         </div>
 
         {/* More Projects Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
-        >
-          <motion.a
-            href="https://github.com/1aimee7"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            <Github size={24} />
-            More Projects
-            <ExternalLink size={20} />
-          </motion.a>
-          <p className="text-slate-400 text-sm mt-3">
-            Explore my complete portfolio on GitHub
-          </p>
-        </motion.div>
+        
+          
       </div>
     </section>
   );

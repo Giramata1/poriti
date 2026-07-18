@@ -56,7 +56,7 @@ export default function ContactSection() {
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-white relative">
           Contact Me
-          <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary"></span>
+          <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-blue-600 dark:bg-blue-400"></span>
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-xl mx-auto text-center">
           Interested in working together? I&apos;d love to hear from you!
@@ -73,8 +73,8 @@ export default function ContactSection() {
                   <input
                     {...register('name', { required: 'Name is required' })}
                     id="name"
-                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Aimee Ishimwe"
+                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    placeholder="NZASINGIZIMANA Jean Bonheur"
                   />
                   {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
                 </div>
@@ -92,8 +92,8 @@ export default function ContactSection() {
                     })}
                     id="email"
                     type="email"
-                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="aimeishimwe25@gmail.com"
+                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    placeholder="leatusbonheur@gmail.com"
                   />
                   {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
                 </div>
@@ -105,8 +105,8 @@ export default function ContactSection() {
                 <input
                   {...register('subject', { required: 'Subject is required' })}
                   id="subject"
-                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Your project"
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  placeholder="Software Development Opportunity"
                 />
                 {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>}
               </div>
@@ -117,9 +117,9 @@ export default function ContactSection() {
                 <textarea
                   {...register('message', { required: 'Message is required' })}
                   id="message"
-                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                   rows={5}
-                  placeholder="Tell me about your project ..."
+                  placeholder="Tell me about your project or opportunity ..."
                 />
                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
               </div>
@@ -127,7 +127,7 @@ export default function ContactSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="w-full md:w-auto bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-[#e69520] transition duration-300 shadow-md"
+                className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition duration-300 shadow-md"
               >
                 Send Message
               </motion.button>
@@ -138,7 +138,7 @@ export default function ContactSection() {
               <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Contact Information</h3>
               <address className="space-y-6 not-italic">
                 <div className="flex items-start">
-                  <div className="bg-primary p-3 rounded-full text-white mr-4">
+                  <div className="bg-blue-600 p-3 rounded-full text-white mr-4">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
@@ -146,24 +146,24 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 dark:text-white">Email</h4>
-                    <a href="mailto:aimeishimwe25@gmail.com" className="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
-                      aimeishimwe25@gmail.com
+                    <a href="mailto:leatusbonheur@gmail.com" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors">
+                      leatusbonheur@gmail.com
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="bg-primary p-3 rounded-full text-white mr-4">
+                  <div className="bg-blue-600 p-3 rounded-full text-white mr-4">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 dark:text-white">Phone</h4>
-                    <p className="text-gray-600 dark:text-gray-300">+250784887037</p>
+                    <p className="text-gray-600 dark:text-gray-300">+250 791 467 695</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="bg-primary p-3 rounded-full text-white mr-4">
+                  <div className="bg-blue-600 p-3 rounded-full text-white mr-4">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
@@ -171,6 +171,18 @@ export default function ContactSection() {
                   <div>
                     <h4 className="font-semibold text-gray-800 dark:text-white">Location</h4>
                     <p className="text-gray-600 dark:text-gray-300">Kigali, Rwanda</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="bg-blue-600 p-3 rounded-full text-white mr-4">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 110-12 6 6 0 010 12z" />
+                      <path d="M10 8a1 1 0 00-1 1v2a1 1 0 002 0V9a1 1 0 00-1-1z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 dark:text-white">Availability</h4>
+                    <p className="text-gray-600 dark:text-gray-300">Open for full-time, internship, or contract</p>
                   </div>
                 </div>
               </address>

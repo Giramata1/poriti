@@ -50,8 +50,8 @@ export default function Header() {
               <FaCode className="text-black text-lg" />
             </div>
             <div className="flex items-center">
-              <span className="text-yellow-400 group-hover:text-yellow-300 transition-colors">AIMEE</span>
-              <span className="text-gray-800 ml-2 group-hover:text-gray-600 transition-colors">ISHIMWE</span>
+              <span className="text-yellow-400 group-hover:text-yellow-300 transition-colors">JEAN BONHEUR</span>
+              <span className="text-gray-800 ml-2 group-hover:text-gray-600 transition-colors">NZASINGIZIMANA</span>
             </div>
           </Link>
 

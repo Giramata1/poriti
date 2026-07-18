@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Code2, Briefcase } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,14 +8,15 @@ const Footer = () => {
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
+    { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' }
   ];
 
   const services = [
-    'Frontend Development',
-    'React Applications', 
-    'UI/UX Design',
-    'Website Optimization'
+    'Software Development',
+    'Web Applications',
+    'IT Support & Consulting',
+    'Business Automation'
   ];
 
   return (
@@ -27,18 +28,18 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">AI</span>
+                <Code2 size={18} className="text-white" />
               </div>
-              <h3 className="text-lg font-bold">AIMEE ISHIMWE</h3>
+              <h3 className="text-lg font-bold">JEAN BONHEUR</h3>
             </div>
             <p className="text-gray-400 text-sm mb-4">
-              Frontend Developer crafting modern web experiences.
+              Software Developer & IT Support Specialist building practical solutions.
             </p>
             <div className="flex space-x-3">
-              <a href="https://github.com/1aimee7" className="w-8 h-8 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
+              <a href="https://github.com/nzasingizimana" className="w-8 h-8 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
                 <Github size={16} />
               </a>
-              <a href="https://linkedin.com/in/aimeeishimwe" className="w-8 h-8 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
+              <a href="https://linkedin.com/in/nzasingizimana-jean-bonheur" className="w-8 h-8 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
                 <Linkedin size={16} />
               </a>
             </div>
@@ -80,21 +81,25 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail size={14} className="text-gray-400" />
-                <a href="mailto:aimee@devpro.com" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  aimeishimwe25@gmail.com
+                <a href="mailto:leatusbonheur@gmail.com" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  leatusbonheur@gmail.com
                 </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Briefcase size={14} className="text-gray-400" />
+                <span className="text-gray-400 text-sm">+250 791 467 695</span>
               </div>
             </div>
             <div className="mt-4 inline-flex items-center px-2 py-1 bg-green-900/30 rounded-full">
               <div className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></div>
-              <span className="text-xs text-green-400">Available</span>
+              <span className="text-xs text-green-400">Open to Work</span>
             </div>
           </div>
         </div>
 
         {/* Bottom */}
         <div className="border-t border-slate-800 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>© {currentYear} Aimee Ishimwe. All rights reserved.</p>
+          <p>© {currentYear} NZASINGIZIMANA Jean Bonheur. All rights reserved.</p>
           <div className="flex space-x-4 mt-2 md:mt-0">
             <a href="#privacy" className="hover:text-white transition-colors">Privacy</a>
             <a href="#terms" className="hover:text-white transition-colors">Terms</a>
