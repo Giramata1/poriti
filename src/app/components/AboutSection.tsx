@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 const milestones = [
   "Started as an IT student with a passion for building real-world tools — from Excel dashboards to web apps.",
@@ -48,10 +47,10 @@ export default function AboutSection() {
           </div>
           <div className="md:w-1/2 text-left">
             <p className="text-gray-600 dark:text-gray-300 mt-6 text-lg leading-relaxed">
-              I'm <strong className="text-gray-800 dark:text-white">NZASINGIZIMANA Jean Bonheur</strong>, a Year 2 Information Technology student and software developer based in Kigali, Rwanda. My journey began with a curiosity for technology, leading me to build functional, real-world applications rather than just studying theory.
+              I&apos;m <strong className="text-gray-800 dark:text-white">NZASINGIZIMANA Jean Bonheur</strong>, a Year 2 Information Technology student and software developer based in Kigali, Rwanda. My journey began with a curiosity for technology, leading me to build functional, real-world applications rather than just studying theory.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mt-4 text-lg leading-relaxed">
-              I'm comfortable across <strong className="text-gray-800 dark:text-white">Python, PHP, and JavaScript</strong>, with a solid grounding in networking fundamentals and IT support gained through direct consulting experience. I've built everything from a full business management system in Excel to a multi-language web platform for bus ticket booking.
+              I&apos;m comfortable across <strong className="text-gray-800 dark:text-white">Python, PHP, and JavaScript</strong>, with a solid grounding in networking fundamentals and IT support gained through direct consulting experience. I&apos;ve built everything from a full business management system in Excel to a multi-language web platform for bus ticket booking.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm">IT Consultant</span>
@@ -77,9 +76,9 @@ export default function AboutSection() {
             transition={{ duration: 0.5 }}
             className="text-lg text-gray-700 dark:text-gray-300 italic bg-gray-200 dark:bg-gray-800 px-6 py-4 rounded-lg max-w-2xl mx-auto text-center relative"
           >
-            <span className="absolute left-4 top-2 text-2xl text-gray-500 dark:text-gray-400">“</span>
+            <span className="absolute left-4 top-2 text-2xl text-gray-500 dark:text-gray-400">&ldquo;</span>
             {currentMilestone}
-            <span className="absolute right-4 bottom-2 text-2xl text-gray-500 dark:text-gray-400">”</span>
+            <span className="absolute right-4 bottom-2 text-2xl text-gray-500 dark:text-gray-400">&rdquo;</span>
           </motion.blockquote>
         </figure>
       </motion.div>

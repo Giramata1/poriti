@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, MapPin, Award, Code2, Briefcase } from 'lucide-react';
+import { ArrowRight, Download, MapPin, Code2, Briefcase } from 'lucide-react';
 
 const ProfessionalHeroSection = () => {
   const stats = [
